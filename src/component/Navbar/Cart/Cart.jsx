@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const Cart = ({cart, setCart, order, setOrder}) => {
+const Cart = ({cart, setCart, order, setOrder, isActiveCart, setIsActiveCart, handlerClickCart}) => {
     let subtotal = 0;
     const navigate = useNavigate();
     const handlerRemoveItem = id => {
@@ -18,15 +18,20 @@ const Cart = ({cart, setCart, order, setOrder}) => {
         setOrder(order-orderByIndexItem);
     }
     const handlerViewCarClick = () => {
+        setIsActiveCart(false);
         navigate('/cart-detail');
+
     }
     //console.log('halo')
     
     return (
         <Fragment>
-            <div className="cart-container-hiden">
+            <div className={isActiveCart? "cart-container-hidennonactive":"cart-container-hidenactive"}>
                     <div className="cart-content-hiden">
-                        <p className="title-cart-hiden">Your Cart</p>
+                        <div className="flexbox-text">
+                            <p className="title-cart-hiden">Your Cart</p>
+                            <p className="title-cart-hiden X" onClick={handlerClickCart}>x</p>
+                        </div>
                         <p className="body-cart-hiden">{`you have ${order} in your cart!`}</p>
                         <div className="cart-scroll-hiden">
                             {
@@ -73,8 +78,12 @@ const Cart = ({cart, setCart, order, setOrder}) => {
                         </div>
                     </div>
 
+                        
             </div>
-                    
+                <div className={isActiveCart? "darker plus":"normal"}>
+                
+
+                </div>
         </Fragment>
     );
 }

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.nav-container{
+.nav-container, .nav-active{
     display: flex;
     width: 100%;
     height: 96px;
@@ -8,10 +8,13 @@
     top: 0px;
     left: 0px;
     position: fixed; 
-    z-index: 10;
-    
 }
-
+.nav-container{
+    z-index: 10;
+}
+.flexbox-text{
+    display: flex;
+}
 .order-value-cart{
     margin-top: -52px;
     margin-left: 10px;
@@ -89,6 +92,17 @@
     margin-bottom: 18px;
     padding-right: 37.63px ;
 }
+.nav-active{
+    z-index: 2;
+
+}
+.cart-icon:hover{
+    cursor: pointer;
+}
+.plus{
+    margin-top: -90px;
+    padding-bottom: 90px;
+}
 .search-icon{
     width: 18.75px;
     height: 18.75px;
@@ -107,27 +121,20 @@
 }
 
 
-.collection-hide-menu{
+.collection-hide-menu-active, .collection-hide-menu-nonactive{
     display: none;
-    width: 1350px;
-    margin-left: -734px;
+    width: 100%;
     height: 308px;
     background-color: #F5EFE9;
-    position: absolute;
-    
+    padding-top: 40px;
+    position: fixed;
 }
-.collection-container:hover .collection-hide-menu {
+.collection-hide-menu-nonactive{
     display: block;
-    box-shadow: 0px 0px 0px 500px rgba(0,0,0,0.8);
-}
-.collection-container:hover .menu-text{
-    color: #D8A338;
+    z-index: 10;
 }
 
 .hide-menu-container{
-    margin-top: 40px;
-    margin-left: 72px;
-    margin-right: 72px;
     display: flex;
 }
 .collection-grid {
@@ -140,6 +147,7 @@
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     color: #333333;
+    margin-left: 72px;
     height: 24px;
 }
 .collection-grid-text:hover{
@@ -157,30 +165,32 @@
     border-radius: 4px;
 }
 .text-banner{
+    position: relative;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     color: #333333;
     height: 24px;
     text-align: center;
 }
-.cart-container-hiden{
+.cart-container-hidenactive, .cart-container-hidennonactive{
     width: 550px;
     height: 1024px;
     background-color: white;
     display: none;
-    margin-left: -390px;
-    margin-top: -90px;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 10;
+    float: right;
+    margin-left: 60%;
 }
 
-.cart-container:hover  .cart-container-hiden{
+.cart-container-hidennonactive{
     display: block;
-    box-shadow: 0px 0px 0px 1000px rgba(0,0,0,0.8);
 }
+
 .cart-container{
     width: 20px;
-}
-.cart-container:hover + .search-icon-container{
-    display: none;
 }
 
 .search-icon-container{
@@ -202,6 +212,31 @@
 .body-cart-hiden{
     font-size: 16px;
     margin-top: -30px;
+    
+}
+.X{
+    font-weight: normal;
+    font-size: 20px;
+    padding-left: 300px;
+}
+.X:hover{
+    cursor: pointer;
+    color: red;
+}
+.darker, .normal{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+}
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+}
+.darker{
+    box-shadow: inset 0px 0px 700px 700px rgba(0, 0, 0, 0.8);
+    z-index: 4;
+    display: block;
     
 }
 

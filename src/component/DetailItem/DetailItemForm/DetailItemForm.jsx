@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from "react";
 
-const DetailItemForm = ({item, itemDetailBeforeAddToCart, setItemDetailBeforeAddToCart, finalPrice, 
+const DetailItemForm = ({items, item, itemDetailBeforeAddToCart, setItemDetailBeforeAddToCart, finalPrice, 
     offers, cart, setCart, order, setOrder}) => {
     const [quantity, setQuantity] = useState(1);
     const [isAlertVisible, setIsAlertVisible] = useState(false);
@@ -78,7 +78,15 @@ const DetailItemForm = ({item, itemDetailBeforeAddToCart, setItemDetailBeforeAdd
         }
         setCart(cartTemp);
     }
-
+    const getItemInItemsDatabase = (itemsBundle)  => {
+        let dataItemsBundle = [];
+        items?.map((item)=>{
+            if (item.name===itemsBundle[0] || item.name===itemsBundle[1]){
+                dataItemsBundle.push(item);
+            }
+        })
+        return dataItemsBundle;
+    }
     
     useEffect(()=>{
         pushItemToCart();
@@ -158,15 +166,45 @@ const DetailItemForm = ({item, itemDetailBeforeAddToCart, setItemDetailBeforeAdd
                                                 </div>
                                             );
                                         }
+                                    }else if (offer.category==="bundle"){
+                                        let dataItemsBundle = getItemInItemsDatabase(offer.items);
+                                        console.log(dataItemsBundle)
+                                        let price = parseInt(dataItemsBundle[0].price.substr(2))+parseInt(dataItemsBundle[1].price.substr(2));
+                                        let finalPrice = price*offer.discount/100;
+                                        return (
+                                            <div className="bundle-container">
+                                                <div className="bundle-title">{offer.title}</div>
+                                                <div className="bundle-body">{offer.description}</div>
+                                                <div className="bundle-img-container">
+                                                    <img src={dataItemsBundle[0].img1} alt='img1'/>
+                                                    <div>+</div>
+                                                    <img src={dataItemsBundle[1].img1} alt="img2" />
+                                                </div>
+                                                <div className="bundle-price-container">
+                                                    <div className="bundle-price">
+                                                        <div className="bundle-item-info">{dataItemsBundle[0].name}</div>
+                                                        <div className="bundle-item-info right-info-bundle">Rp {parseInt(dataItemsBundle[0].price.substr(2))}</div>
+                                                    </div>
+                                                    <div className="bundle-price">
+                                                        <div className="bundle-item-info">{dataItemsBundle[1].name}</div>
+                                                        <div className="bundle-item-info right-info-bundle">Rp {parseInt(dataItemsBundle[1].price.substr(2))}</div>
+                                                    </div>
+                                                </div>
+                                                <div className="bundle-total-price">
+                                                    <div className="bundle-total-title">Price For All (save {offer.discount}%)</div>
+                                                    <div className="bundle-total-p">
+                                                        <div className="bundle-total-disc">Rp {finalPrice}</div>
+                                                        <div className="bundle-total-nodisc">Rp {price}</div>
+                                                    </div>
+                                                </div>
+                                                <div className="btn-add-bundletocart">
+                                                    ADD BUNDLE TO CART
+                                                </div>
+                                            </div>
+                                        )
+
+                                        
                                     }
-                                    /*else if (offer.category==="bundle"){
-                                        const idx_item = isItemABundleDiscount(offer.items)
-                                        if (idx_item!==-1){
-                                            //findItemInItemsDatabase(offer.items[idx_item][0], offer.items[idx_item][1]);
-
-
-                                        }
-                                    }*/
                                 }
                                 return null;
                             })

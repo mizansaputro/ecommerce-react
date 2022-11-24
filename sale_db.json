@@ -267,9 +267,9 @@
     },
     {
       "id": 2,
-      "title": "Buy this bundle and get off to",
+      "title": "Buy this bundle and get off to 25%.",
       "description": "By buying this item, you can get the best price discount for every T-Shirt purchase up to",
-      "items": [["Jaket Nike V1", "Kameja Erigo V5"]],
+      "items": ["Jaket Nike V1", "Kameja Erigo V5"],
       "category": "bundle",
       "discount": 25 
     }

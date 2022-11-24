@@ -120,7 +120,7 @@ const DetailItem = ({items, cart, setCart, itemsDatabase, offers, order, setOrde
                             }
                             <p className="detail-item-description">{item.description}</p>
                         </div>
-                        <DetailItemForm item={item} itemDetailBeforeAddToCart={itemDetailBeforeAddToCart} 
+                        <DetailItemForm items={items} item={item} itemDetailBeforeAddToCart={itemDetailBeforeAddToCart} 
                             setItemDetailBeforeAddToCart={setItemDetailBeforeAddToCart} finalPrice={finalPrice}
                             offers={offers} cart={cart} setCart={setCart} order={order} setOrder={setOrder}/>
                     </div>

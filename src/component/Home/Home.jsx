@@ -13,8 +13,11 @@ const Home = ({items, getAnItem}) =>{
     
     return (
             <Fragment>
-                <Banner/>
-                {<Content items={items}/>}
+                <div className="home">
+                    
+                    <Banner/>
+                    {<Content items={items}/>}
+                </div>
             </Fragment>
     );
 }

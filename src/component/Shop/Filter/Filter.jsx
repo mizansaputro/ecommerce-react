@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
 const _ = require("lodash"); 
 
-const Filter = ({items, paramsCategory, setParamsCategory}) => {
+
+const Filter = ({items, paramsCategory, setParamsCategory, sortBy, setSortBy}) => {
     const [itemsFilter, setItemsFilter] = useState([]);
     const [uniqueCategory, setUniqueCategory] = useState([]);
     const [uniqueBrands, setUniqueBrands] = useState([]);
@@ -14,7 +15,6 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
     })
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPages, setPostsPerPage] = useState(6);
-    //const [sortBy, setSortBy] = useState("Best Sellers");
 
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const setCategory= (category) => {
         setFilter({
-            category: category,
+        category: category,
             brands: filter.brands,
             colors: filter.colors
         });
@@ -106,9 +106,11 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const getItemsWithFilter = () => {
         //console.log('jalan');
+        let itemsData = items;
+        
         let newData = [];
         // eslint-disable-next-line array-callback-return
-        items.map((item) => {
+        itemsData?.map((item) => {
             if (filter.category.length!==0 && filter.category!=="All"){
                 if (item.category===filter.category && getIsBrandsIncludeInFilter(item) && getIsColorsIncludeInFilter(item)){
                     newData.push(item)
@@ -120,10 +122,9 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
             }
             
         })
-        setItemsFilter(newData);
-        if (filter.category.length===0 && filter.brands.length===0 && filter.colors.length===0){
-            setItemsFilter(items);
-        }
+        return newData;
+        
+        
             
     }
     const handlerLimitPage = (event) =>{
@@ -134,138 +135,160 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
     const handlerItemClick = (id) =>{
         navigate(`/detail-item/${id}`)
     }
-    /*const sortedItemsBy = (condition) =>{
-        let dataItems = itemsFilter;
+    const pushFinalPriceToArrayOfDictionary = (data) =>{
+        let price = 0;
+        let discount = 0;
+        let finalPrice = 0;
+        data?.map((item,index)=>{
+            price = parseInt(item.price.substr(2));
+            discount =  parseInt(item.discount.substr(0, item.discount.length-1));
+            finalPrice = price - (price*discount)/100;
+            data[index].finalPrice = finalPrice;
+        })
+        return data;
+    }
+    const sortedItemsBy = (condition) =>{
+        let dataItems = [];
+        if (filter.category.length===0 && filter.brands.length===0 && filter.colors.length===0){
+            dataItems = items;
+        }else{
+            let newData = getItemsWithFilter()
+            dataItems = newData;
+        }
         let dataFilter;
         if (condition==="Best Sellers"){
-            dataFilter = _.sortBy(dataItems, ['buy'], ['desc']);
+            dataFilter = _.sortBy(dataItems, ['buy'], ['desc']).reverse();
         }else {
+            let dataPushFinalPrice = pushFinalPriceToArrayOfDictionary(dataItems);
+            
             if(condition==="Lowest Price"){
-                _.orderBy(dataItems, (o) => {
-                    return parseInt(o.price.substr(2), 10);
-                }, ['asc']);
+                dataFilter = _.sortBy(dataPushFinalPrice, ['finalPrice'], ['asc']);
             }else if(condition==="Highest Price"){
-                dataFilter = _.orderBy(dataItems, ['price'], ['desc']);
+                dataFilter = _.sortBy(dataPushFinalPrice, ['finalPrice'], ['asc']).reverse();
             }
         }
-        console.log(dataFilter);
-        setItemsFilter(dataItems);
+        return dataFilter;
     }
     const handlerSortBy = (event) => {
         setSortBy(event.target.value);
-        sortedItemsBy(sortBy);
+        setItemsFilter(sortedItemsBy(sortBy));
 
-    }*/
+    }
     useEffect(() => {
         if (paramsCategory.length>1){
             setCategory(paramsCategory);
         }
         setUniqueCategory(getUniqueCategory(items));
         setUniqueBrands(getUniqueBrands(items));
-        getItemsWithFilter();
+        setItemsFilter(sortedItemsBy(sortBy));
         setCurrentPage(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, filter.category, filter.brands, paramsCategory]);
+    }, [items, filter.category, filter.brands, paramsCategory, sortBy]);
+    
     
     
     
     const lastPostIndex = currentPage*postsPerPages;
     const firstPostIndex = lastPostIndex-postsPerPages;
-    let currentPost = itemsFilter.slice(firstPostIndex,lastPostIndex);
-    
-    
+    let currentPost = itemsFilter?.slice(firstPostIndex,lastPostIndex);
     
     return (
         <Fragment>
-            <div className="categories-filter-container">
-                <div className="title-filter">CATEGORIES</div>
-                <div className="body-filter-container">
-                {
-                    uniqueCategory.map((category) => {
-                        return (
-                            <div className={category===filter.category? "body-filter active-category":"body-filter"} name={category} key={category} onClick={(event) => handlerCategoryFilterClick(event)}>
-                                {category}
-                            </div>
-                        );
-                    })    
-                }
-                </div>
-                <div className="title-filter">BRANDS</div>
-                <div className="body-filter-container">
-                {
-                    uniqueBrands.map((brand) => {
-                        return (
-                            <div className="body-filter" key={brand}>
-                                <input className="checkbox-filter" type="checkbox" id={brand} name={brand} value={brand} 
-                                    key={brand} onClick={(event) => handlerBrandInputCheckbox(event)}/>
-                                <label className="body-filter checkbox-text" htmlFor={brand}>{brand}</label>
-                            </div>
-                        );
-                    })    
-                }
-                </div>      
-            </div>
-            <div className="items-page">
-                <div className="filter-menu-container">
-                    <div className="text-info-limit">Show {firstPostIndex+1} - {lastPostIndex} of {itemsFilter.length}</div>
-                    <div className="drop-down-limitpage">
-                    <label htmlFor="limitpage"></label>
-                        <select  className="limitpage-container" name="limitpage" id="limitpage" onChange={event => handlerLimitPage(event)}>
-                            <option value={6} selected>Show 6 Products</option>
-                            <option value={12} >Show 12 Products</option>
-                        </select>
-                    </div>
-                    <div className="drop-down-sortby">
-                    <label htmlFor="sortby"></label>
-                        <select  className="sortby-container" name="sortby" id="sortby">
-                            <option value={"Best Sellers"} selected>Best Sellers</option>
-                            <option value={"Lowest Price"} >Lowest Price</option>
-                            <option value={"Highest Price"} >Highest Price</option>
-                        </select>
-                    </div>
-                    
-                </div> 
-                <div className="items-container">
-                    {
-                        currentPost.map((item) => {
-                            let price = parseInt(item.price.substr(2));
-                            let discount = parseInt(item.discount.substr(0,item.discount.length-1));
-                            let finalPrice = price - ((price*discount)/100);
-                            
-                            if (discount!==0){
+            <div className="shop-container">
+                <div className="categories-filter-container">
+                    <div className="categories">
+                        <div className="title-filter">CATEGORIES</div>
+                        <div className="body-filter-container">
+                        {
+                            uniqueCategory.map((category) => {
                                 return (
-                                    <div className="item-grid"  onClick={() => handlerItemClick(item.id)} >
-                                        <div className="sale-item">SALE</div>
-                                        <img className="img-grid-item" src={item.img1} alt={`${item.name}.img`}/>
-                                        <div className="middle-text-item">
-                                            <div className="text-grid">See Detail</div>
-                                        </div>
-                                        <div className="text-filter-title">{item.name}</div>
-                                            <div className="price-container">
-                                                <div className="price no-disc">Rp {price}</div>
-                                                <div className="price disc">Rp {finalPrice}</div>
-                                            </div>
+                                    <div className={category===filter.category? "body-filter active-category":"body-filter"} name={category} key={category} onClick={(event) => handlerCategoryFilterClick(event)}>
+                                        {category}
                                     </div>
                                 );
-                            }
+                            })    
+                        }
+                        </div>
+                    </div>
+                    <div className="brand">
+                        <div className="title-filter">BRANDS</div>
+                        <div className="body-filter-container">
+                        {
+                            uniqueBrands.map((brand) => {
                                 return (
-                                    <div className="item-grid">
-                                        <img className="img-grid-item" src={item.img1} alt={`${item.name}.img`}/>
-                                        <div className="middle-text-item">
-                                            <div className="text-grid">See Detail</div>
-                                        </div>
-                                        <div className="text-filter-title">{item.name}</div>
-                                        <div className="price-container">
-                                            <div className="price">Rp {finalPrice}</div>
-                                        </div>
+                                    <div className="body-filter" key={brand}>
+                                        <input className="checkbox-filter" type="checkbox" id={brand} name={brand} value={brand} 
+                                            key={brand} onClick={(event) => handlerBrandInputCheckbox(event)}/>
+                                        <label className="body-filter checkbox-text" htmlFor={brand}>{brand}</label>
                                     </div>
-                                )
-                            
-                        })
-                    } 
-
+                                );
+                            })    
+                        }
+                        </div>      
+                    </div>
                 </div>
-                <Pagination totalPosts={itemsFilter.length===0? items.length : itemsFilter.length} postsPerPages={postsPerPages} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
+                <div className="items-page">
+                    <div className="filter-menu-container">
+                        <div className="text-info-limit">Show {firstPostIndex+1} - {lastPostIndex} of {itemsFilter?.length}</div>
+                        <div className="drop-down-limitpage">
+                        <label htmlFor="limitpage"></label>
+                            <select  className="limitpage-container" name="limitpage" id="limitpage" onChange={event => handlerLimitPage(event)}>
+                                <option value={6} selected>Show 6 Products</option>
+                                <option value={12} >Show 12 Products</option>
+                            </select>
+                        </div>
+                        <div className="drop-down-sortby">
+                        <label htmlFor="sortby"></label>
+                            <select  className="sortby-container" name="sortby" id="sortby" onChange={event => handlerSortBy(event)}>
+                                <option value={"Best Sellers"} selected>Best Sellers</option>
+                                <option value={"Lowest Price"} >Lowest Price</option>
+                                <option value={"Highest Price"} >Highest Price</option>
+                            </select>
+                        </div>
+                        
+                    </div> 
+                    <div className="items-container">
+                        {
+                            currentPost?.map((item) => {
+                                let price = parseInt(item.price.substr(2));
+                                let discount = parseInt(item.discount.substr(0,item.discount.length-1));
+                                let finalPrice = price - ((price*discount)/100);
+                                
+                                if (discount!==0){
+                                    return (
+                                        <div className="item-grid"  onClick={() => handlerItemClick(item.id)} >
+                                            <div className="sale-item">SALE</div>
+                                            <img className="img-grid-item" src={item.img1} alt={`${item.name}.img`}/>
+                                            <div className="middle-text-item">
+                                                <div className="text-grid">See Detail</div>
+                                            </div>
+                                            <div className="text-filter-title">{item.name}</div>
+                                                <div className="price-container">
+                                                    <div className="price no-disc">Rp {price}</div>
+                                                    <div className="price disc">Rp {finalPrice}</div>
+                                                </div>
+                                        </div>
+                                    );
+                                }
+                                    return (
+                                        <div className="item-grid">
+                                            <img className="img-grid-item" src={item.img1} alt={`${item.name}.img`}/>
+                                            <div className="middle-text-item">
+                                                <div className="text-grid">See Detail</div>
+                                            </div>
+                                            <div className="text-filter-title">{item.name}</div>
+                                            <div className="price-container">
+                                                <div className="price">Rp {finalPrice}</div>
+                                            </div>
+                                        </div>
+                                    )
+                                
+                            })
+                        } 
+
+                    </div>
+                    <Pagination totalPosts={itemsFilter?.length===0? items?.length : itemsFilter?.length} postsPerPages={postsPerPages} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
+                </div>
             </div>
         </Fragment>
     );

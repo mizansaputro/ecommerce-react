@@ -12,7 +12,7 @@
 }
 .banner-category, .img-banner-category{
     width: 100%;
-    height: 360px;
+    height: 600px;
 }
 .banner-category{
     margin-top: 90px;
@@ -32,25 +32,37 @@
     text-align:center;
     font-family: 'Poppins', sans-serif;
 }
+.categories-filter{
+    display: flex;
+}
 .categories-filter-container{
     width: 200px;
+    margin-top: 80px;
 }
 .title-filter{
     font-size: 24px;
     font-weight: bold;
-    margin-top: 80px;
     color:#333333;
     font-family: 'Poppins', sans-serif;
+}
+.brand{
+    margin-top: 170px;
+}
+.text-brand{
+    margin-top: 80px;
 }
 .body-filter-container{
     width: 200px;
     height: 120px;
     font-size: 16px;
     color:#333333;
+    margin-top: 20px;
     font-family: 'Poppins', sans-serif;
 }
 .body-filter{
-    margin-top: 24px;
+    padding-left: 10px;
+    padding-top: 15px ;
+    height: 37px;
 }
 .body-filter:hover, .checkbox-filter:hover{
     cursor: pointer;
@@ -161,7 +173,10 @@
     color: #CCCCCC;
 }
 .active-category{
-    background-color: #D8A338;;
+    background-color: #D8A338;
+    color: white;
+    font-weight: bold;
+    
 }
 .limitpage-container, .sortby-container{
     width: 183px;

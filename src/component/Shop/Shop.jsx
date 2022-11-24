@@ -4,7 +4,7 @@ import BannerCategory from "./BannerCategory/BannerCategory";
 import Filter from "./Filter/Filter";
 import "./Shop.css";
 
-const Shop = ({items}) => {
+const Shop = ({items, sortBy, setSortBy}) => {
     const id = useParams().category;
     const [paramsCategory, setParamsCategory] = useState("");
 
@@ -23,9 +23,9 @@ const Shop = ({items}) => {
         <Fragment>
             <div className="shop-page">
                 <BannerCategory paramsCategory={paramsCategory}/>
-                <div className="shop-container">
-                      <Filter items={items} paramsCategory={paramsCategory} setParamsCategory={setParamsCategory}/>
-                </div>
+                <Filter items={items} paramsCategory={paramsCategory} setParamsCategory={setParamsCategory}
+                sortBy={sortBy} setSortBy={setSortBy}/>
+                
             </div>
         </Fragment>
     )
