@@ -14,7 +14,7 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
     })
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPages, setPostsPerPage] = useState(6);
-    const [sortBy, setSortBy] = useState("Best Sellers");
+    //const [sortBy, setSortBy] = useState("Best Sellers");
 
     const navigate = useNavigate();
 
@@ -27,6 +27,8 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
             brands: filter.brands,
             colors: filter.colors
         });
+        setParamsCategory(category);
+        navigate(`/shop/${paramsCategory}`)
         
     }
 
@@ -132,7 +134,7 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
     const handlerItemClick = (id) =>{
         navigate(`/detail-item/${id}`)
     }
-    const sortedItemsBy = (condition) =>{
+    /*const sortedItemsBy = (condition) =>{
         let dataItems = itemsFilter;
         let dataFilter;
         if (condition==="Best Sellers"){
@@ -153,23 +155,19 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
         setSortBy(event.target.value);
         sortedItemsBy(sortBy);
 
-    }
+    }*/
     useEffect(() => {
+        if (paramsCategory.length>1){
+            setCategory(paramsCategory);
+        }
         setUniqueCategory(getUniqueCategory(items));
         setUniqueBrands(getUniqueBrands(items));
         getItemsWithFilter();
         setCurrentPage(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, filter.category, filter.brands]);
-    useEffect(()=>{
-        if (paramsCategory.length>1){
-            setCategory(paramsCategory);
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    useEffect(()=>{
-
-    }, [sortBy])
+    }, [items, filter.category, filter.brands, paramsCategory]);
+    
+    
     
     const lastPostIndex = currentPage*postsPerPages;
     const firstPostIndex = lastPostIndex-postsPerPages;
@@ -219,7 +217,7 @@ const Filter = ({items, paramsCategory, setParamsCategory}) => {
                     </div>
                     <div className="drop-down-sortby">
                     <label htmlFor="sortby"></label>
-                        <select  className="sortby-container" name="sortby" id="sortby" onChange={event => handlerSortBy(event)}>
+                        <select  className="sortby-container" name="sortby" id="sortby">
                             <option value={"Best Sellers"} selected>Best Sellers</option>
                             <option value={"Lowest Price"} >Lowest Price</option>
                             <option value={"Highest Price"} >Highest Price</option>

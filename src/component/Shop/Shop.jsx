@@ -14,7 +14,8 @@ const Shop = ({items}) => {
             setParamsCategory(id);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    },[id]);
+    
     
     
     
