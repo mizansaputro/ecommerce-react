@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.nav-container{
+    display: flex;
+    width: 100%;
+    height: 96px;
+    background-color: white;
+    top: 0px;
+    left: 0px;
+    position: fixed; 
+    z-index: 10;
+    
+}
+
+.order-value-cart{
+    margin-top: -52px;
+    margin-left: 10px;
+    font-family: 'Poppins',sans-serif;
+    background: #FF4D4F;
+    border: 1px solid #FFFFFF;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+}
+.no-value{
+    background-color: white;
+}
+
+.logo-container{
+    display: flex;
+}
+.logo-text{
+    margin-left: 72px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    line-height: 36px;
+    width: 146px;
+    height: 36px;
+    top: 30px;
+    left: 72px;
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
+    font-weight: bold;
+}
+.dot-text{
+    margin-left: 72px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    line-height: 36px;
+    width: 146px;
+    height: 36px;
+    top: 30px;
+    left: 72px;
+    font-family: 'Poppins', sans-serif;
+    color:#D8A338;
+    font-weight: bold;
+    margin-left: -15px;
+}
+.menu-container{
+    margin-left: -20px;
+    display: flex;
+}
+.menu-text{
+    margin-top: 37px;
+    margin-bottom: 38px;
+    margin-left: 40px;
+    margin-right: 40px;
+    height: 21px;
+    width: max-content;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: #333333;
+}
+.cart-search-container{
+    margin-left: 10%;
+    display: flex;
+    padding-left: 74.62;
+}
+.cart-icon{
+    width: 18px;
+    height: 20px;
+    margin-top: 38px;
+    margin-bottom: 18px;
+    padding-right: 37.63px ;
+}
+.search-icon{
+    width: 18.75px;
+    height: 18.75px;
+    margin-top: 38px;
+    margin-bottom: 38.62px;
+}
+
+.menu-container a{
+    text-decoration: none;
+    
+}
+.menu-text:hover{
+    cursor: pointer;
+    color: #D8A338;
+    
+}
+
+
+.collection-hide-menu{
+    display: none;
+    width: 1350px;
+    margin-left: -734px;
+    height: 308px;
+    background-color: #F5EFE9;
+    position: absolute;
+    
+}
+.collection-container:hover .collection-hide-menu {
+    display: block;
+    box-shadow: 0px 0px 0px 500px rgba(0,0,0,0.8);
+}
+.collection-container:hover .menu-text{
+    color: #D8A338;
+}
+
+.hide-menu-container{
+    margin-top: 40px;
+    margin-left: 72px;
+    margin-right: 72px;
+    display: flex;
+}
+.collection-grid {
+    display: grid;
+    grid-template-columns:  90px 90px 90px;
+    height: 171px;
+    column-gap: 119px;
+}
+.collection-grid-text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #333333;
+    height: 24px;
+}
+.collection-grid-text:hover{
+    color: #D8A338;
+    cursor: pointer;
+}
+.img-container-hide{
+    width: 538px;
+    height: 191px;
+    margin-left: 150px;
+}
+.img-banner-hide{
+    width: 538px;
+    height: 191px;
+    border-radius: 4px;
+}
+.text-banner{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #333333;
+    height: 24px;
+    text-align: center;
+}
+.cart-container-hiden{
+    width: 550px;
+    height: 1024px;
+    background-color: white;
+    display: none;
+    margin-left: -390px;
+    margin-top: -90px;
+}
+
+.cart-container:hover  .cart-container-hiden{
+    display: block;
+    box-shadow: 0px 0px 0px 1000px rgba(0,0,0,0.8);
+}
+.cart-container{
+    width: 20px;
+}
+.cart-container:hover + .search-icon-container{
+    display: none;
+}
+
+.search-icon-container{
+    margin-left: 40px;
+}
+
+.cart-content-hiden{
+    padding: 24px;
+    width: 550px;
+    height: 1024px;
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
+    
+}
+.title-cart-hiden{
+    font-size: 36px;
+    font-weight: bold;
+}
+.body-cart-hiden{
+    font-size: 16px;
+    margin-top: -30px;
+    
+}
+
+.cart-scroll-hiden{
+    width: 526px;
+    height: 300px;
+    overflow: auto;
+    margin-top: 56px;
+}
+.item-hidden-content{
+    display: flex;
+    height: 93px;
+    width: 478px;
+    margin-top: 30px;
+    padding-right: 24px;
+
+}
+.item-hidden-info{
+    padding-left: 16px;
+    margin-top: -12px;
+    width: 100%;
+}
+.item-hidden-image{
+    width: 88px;
+    height: 88px;
+}
+.item-hidden-title{
+    font-weight: bold;
+    font-size: 16px;
+}
+.item-hidden-price, .item-hidden-qty{
+    font-size: 14px;
+    margin-top: -10px;
+}
+.item-hidden-subtotal{
+    padding-top: 7px ;
+    text-align: right;
+}
+.item-hidden-noDiscPrice, .item-hidden-discPrice{
+    font-size: 16px;
+    text-decoration: line-through;
+    color: #CCCCCC;
+
+}
+.item-hidden-discPrice{
+    display: none;
+}
+.item-hidden-finalPrice, .item-hidden-finalPrice-no{
+    font-size: 20px;
+    color: #D8A338;
+}
+.item-hidden-finalPrice-no{
+    margin-top: 31px;
+    width: 150px;
+}
+.item-hidden-finalPrice{
+    margin-top: -10px;
+    width: 150px;
+}
+.line{
+    margin-top: 10px;
+    width: 500px;
+    margin-left: -5px;
+    background-color:#E6E6E6;
+    border-color: 1px solid #E6E6E6;
+}
+.subtotal-text{
+    font-size: 20px;
+    color: #333333;
+}
+.subtotal-info{
+    font-size: 20px;
+    color: #333333;
+    width: 100%;
+    text-align: right;
+    padding-right: 74px;
+}
+.subtotal-page{
+    display: flex;
+}
+.button-info{
+    width: 500px;
+    height: 44px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    border: 1px solid #333333;
+    border-radius: 24px;
+}
+.proceed{
+    margin-top: 16px;
+    background: #D8A338;
+    border: transparent;
+    color: white;
+}
+.viewcart{
+    margin-top: 24px;
+}
+.button-info:hover{
+    cursor: pointer;
+}
+.item-hiden-remove{
+    width: 100%;
+    height: 21px;
+    color: #FF7875;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: underline;   
+}
+.item-hiden-remove:hover{
+    cursor: pointer;
+
+}
+.hr-peritem{
+    margin-top: 36px;
+    width: 95%;
+    background-color: #E6E6E6;
+    border-color: #E6E6E6;
+    border: 0.1px solid #E6E6E6;
+}
+.hr-peritem-line{
+    background-color: #E6E6E6;
+    border-color: #E6E6E6;
+}

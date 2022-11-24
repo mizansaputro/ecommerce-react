@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.banner-container {
+    width: 100%;
+    height: 550px;
+    margin-top: 94px;    
+}
+.image-container img{
+    width: 100%;
+    height: 450px;
+    
+}
+.topCollection-text{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 422px;
+    padding-right: 422px;
+
+}
+.topCollection-text p.topCollection-title{
+    font-weight: bold;
+    font-size: 36px;
+}
+.topCollection-text p.topCollection-body{
+    font-size: 14px;
+    margin-top: 8px;
+}
+button.item-img-arv{
+    background-color: transparent;
+    border: 0px;
+}
+button.item-img-arv:hover{
+    cursor: pointer;
+}
+.image-comp, .img-arv{
+    width: 230px;
+    height: 230px;
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.items-topCollection-slider-carousel button:hover .image-comp, .item-img-arv .img-arv:hover{
+    opacity: 0.3;
+}
+  
+.items-topCollection-slider-carousel button:hover .middle, .item-img-arv:hover .middle-arv {
+    opacity: 1;
+}
+.middle-arv{
+    text-align: center;
+    transition: .5s ease;
+    opacity: 0;
+    margin-left: 150px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.text {
+    text-align: center;
+    font-family: 'Poppins',sans-serif;
+    width: 150px;
+    height: 30px;
+    padding-left: 80px;
+    padding-top: 8px;
+    background-color: darkgray;
+    color: white;
+    font-size: 16px;
+    margin-top: -100px;
+    display: flex;
+}
+.text-arv p{
+    text-align: center;
+    font-family: 'Poppins',sans-serif;
+    width: 150px;
+    height: 30px;
+    padding-left: 65px;
+    padding-top: 8px;
+    background-color: darkgray;
+    color: white;
+    font-size: 16px;
+    margin-top: -100px;
+    display: flex;
+}
+.caption-item{
+    text-align: center;
+    margin-left: 60px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 18px;
+    width: 200px;
+    height: 200px;
+}
+.caption-item-category{
+    text-align: center;
+    font-family: 'Poppins',sans-serif;
+    font-size: 18px;
+    width: 200px;
+    height: 200px;
+}
+.img-container{
+    padding-left: 31px;
+    padding-right: 31px;
+}
+.items-topCollection-slider{
+    margin-top: 100px;
+    width: 100%;
+    height: 400px;
+    align-items: center;
+}
+.items-topCollection-slider-carousel{
+    width: 93%;
+    margin-left: 50px;
+}
+.price-item{
+    color: #D8A338;
+    font-size: 16px;
+    
+}
+.promote-container{
+    display: flex;
+    width: 100%;
+    height: 350px;
+    margin-top: 90px;
+}
+.promote-text{
+    width: 60%;
+    background-color: #DEB9B3;
+    margin-left: 72px;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 207px;
+    font-family: 'Poppins', sans-serif;
+}
+.promote-title{
+    font-weight: bold;
+    font-size: 36px;
+}
+.promote-body{
+    font-size: 14px;
+    margin-top: -30px;
+}
+.img-promote-container{
+    width: 40%;
+    background-color: #DEB9B3;
+    margin-right: 72px;
+}
+.promote-btn{
+    width: 147px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #333333;
+    font-size: 14px;
+    text-align: center;
+    background-color: transparent;
+    margin-top: 70px;
+}
+.newArrival-text{
+    margin-top: 90px;
+    margin-left: 72px;
+    margin-right: 72px;
+    font-family: 'Poppins',sans-serif;
+    text-align: center;
+}
+.newArrival-title{
+    font-weight: bold;
+    font-size: 36px;
+}
+.newArrival-body{
+    font-size: 14px;
+    margin-top: 8px;
+}
+.newArrival-items{
+    margin-top: 56px;
+    margin-right: 72px;
+    margin-left: 72px;
+    display: grid;
+    grid-template-columns: 294px 294px 294px 294px ;
+    grid-gap: 10px;
+}
+  
+div.newArrival-item {   
+    text-align: center;
+    margin-right: 40px;
+}
+.item-img-arv img{
+    width: 294px;
+    height: 294px;
+
+}
+.item-text-arv{
+    text-align: center;
+    width: 294px;
+    height:100px;
+    font-family: 'Poppins',sans-serif;
+    margin-top: 20px;
+}
+.item-title-arv{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+}
+.item-price-arv{
+    font-size: 16px;
+    color: #D8A338;
+    margin-top: -20px;
+}
+.category-container{
+    margin-top: 90px;
+    height: 900px;
+    margin-left: 72px;
+    margin-right: 72px;
+}
+.category-card-container{
+    display: grid;
+    grid-template-columns: 395px 395px 395px;
+    grid-gap: 10px;
+    height: 292px;
+    text-align: center;
+}
+.category-card-1{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/premium-photo/cool-trendy-hipster-man-fashion-business-outfit-with-jacket-shirt-with-sunglasses-gray-background-street_338491-11526.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.category-card-2{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://img.freepik.com/premium-photo/gorgeous-elegant-sensual-blonde-woman-wearing-fashion-black-dress_149155-246.jpg?w=2000');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.category-card-3{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://thumbs.dreamstime.com/b/pensive-portrait-child-little-girl-denim-jacket-posing-studio-kids-fashion-gray-background-portrait-pensive-150695194.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.category-card-text{
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 30%;
+}
+.slider-container{
+    margin-top: 70px;
+    display: flex;
+}
+.slider-bg-img{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://image.winudf.com/v2/image1/Y29tLmFuZGlhcHBzLmxhdGVzdC5tZW4uZmFzaGlvbi5jbG90aGVzLnN0eWxlX3NjcmVlbl82XzE1NzA0NTkzNDhfMDE2/screen-3.jpg?fakeurl=1&type=.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 362px;
+    height: 477px;
+    text-align: center;
+}
+.slider-bg-text{
+    font-family: 'Poppins',sans-serif;
+    color: white;
+    padding-top: 150px;
+}
+.slider-bg-title{
+    font-size: 36px;
+    font-weight: bold;
+}
+.slider-bg-body{
+    font-size: 14px;
+    margin-top: -25px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.btn-img{
+    width: 147px;
+    height: 32px;
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+}
+.category-slider{
+    margin-left: 56px;
+}
+.category-btn-container{
+    display: grid;
+    grid-template-columns: 132px 132px 132px 132px;
+    grid-gap: 24px;
+    text-align: center;
+    height: 32px;
+}
+.category-btn{
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #333333;
+    border-radius: 20px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 14px;
+}
+.category-btn:hover{
+    cursor: pointer;
+}
+.items-category-slider{
+    margin-top: 80px;
+    width: 900px
+}
+.item-category-img{
+    width: 200px;
+    height: 200px;
+}
+.container-cat {
+  position: relative;
+  width: 50%;
+}
+
+.item-category-img {
+  opacity: 1;
+  display: block;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle-cat {
+  margin-left: 50px;
+  margin-top: 10px;
+  text-align: center;
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container-cat:hover .item-category-img {
+  opacity: 0.3;
+}
+
+.container-cat:hover .middle-cat {
+  opacity: 1;
+}
+
+.text-cat {
+  background-color: darkgray;
+  color: white;
+  font-size: 16px;
+  width: 150px;
+  height: 30px;
+  padding-top: 12.5px;
+}
+.items-category-slider-carousel{
+    width: 785px;
+}
+.items-topCollection-slider-carousel button{
+    background-color: transparent;
+    border: none;
+    transition: transform .2s;
+    position: relative;
+}
+.items-topCollection-slider-carousel button:hover{
+    cursor: pointer;
+}
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.item-category-btn{
+    border: none;
+    background-color: transparent;
+}
+.item-category-btn:hover{
+    cursor: pointer;
+}
+    

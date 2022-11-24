@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.detail-cart-container{
+    width: 100%;
+    height: 1400px;
+    color: #333333;
+    font-family: 'Poppins',sans-serif;
+}
+.banner-cart-container{
+    width: 100%;
+    height: 360px;
+    background-color: #F5EFE9;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    color: #333333;
+    font-family: 'Poppins',sans-serif;
+    font-size: 56px;
+    padding-top: 25%;
+}
+.cart-content-container{
+    width: 100%;
+    height: 450px;
+    display: flex;
+}
+.cart-order-detail{
+    box-sizing: border-box;
+    width: 686px;
+    background-color: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    border-radius: 8px;
+    margin-top: 40px;
+    margin-left: 122px;
+}
+
+
+.text-cart-order{
+    display: flex;
+}
+.item-cart-detail{
+    display: flex;
+    margin-top: 10px;
+}
+.product-cart-order{
+    padding-left: 24px;
+    padding-top: 10px;
+}
+
+.title-cart-detail{
+    padding-top: 16px;
+    height: 41px;
+    border-bottom: 1px solid #E6E6E6;
+    font-weight: bold;
+    font-size: 16px;
+    width: 220px;
+}
+.product-detailcart{
+    padding-left: 24px;
+}
+.qty-detailcart{
+    text-align: center;
+}
+.price-detailcart{
+    text-align: center;
+}
+.item-cart-info{
+    border-bottom: 1px solid #E6E6E6;
+    font-weight: bold;
+    font-size: 16px;
+    width: 220px;
+    height: 80px;
+    display: flex;
+}
+.item-img-cart{
+    width: 68px;
+    height: 68px;
+}
+.item-title-cart{
+    font-size: 16px;
+    padding-left: 16px;
+    font-weight: bold;
+}
+.item-remove-cart{
+    font-weight: normal;
+    font-size: 14px;
+    color: #FF7875;
+    text-decoration: underline;
+    margin-top: 19px;
+}
+.item-remove-cart{
+    cursor: pointer;
+}
+.item-minus-btn, .item-plus-btn{
+    width: 30px;
+    height: 40px;
+    background: #FFFFFF;
+    border: none;
+
+
+}
+.item-minus-btn:hover, .item-plus-btn:hover{
+    cursor: pointer;
+}
+.item-input{
+    width: 40px;
+    height: 40px;
+    background: #FFFFFF;
+    border: none;
+    text-align: center;
+}
+.btn-action-cartdetail{
+    text-align: center;
+    align-content: center;
+    height: 40px;
+    width: 110px;
+    background: #FFFFFF;
+    border: 1px solid #E3E5E6;
+    border-radius: 4px;
+    margin-left: 25%;
+    margin-top: 10px;
+}
+.price-container-cartdetail{
+    font-weight: normal;
+    width: 100%;
+    margin-left: 80px;
+}
+.price-disc-detailitem{
+    font-size: 16px;
+    color: #CCCCCC;
+    text-decoration: line-through;
+}
+.price-final-detailitem{
+    font-size: 16px;
+    color: #D8A338;
+    font-weight: bold;
+}
+.list-cart-order{
+    height: 250px;
+    overflow: auto;
+}
+.summary-order{
+    box-sizing: border-box;
+    width: 405px;
+    background-color: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    border-radius: 8px;
+    margin-top: 40px;
+    margin-left: 16px;
+}
+.title-summary{
+    font-weight: bold;
+    color: #333333;
+    font-size: 16px;
+    padding-top: 31px;
+    padding-bottom: 17px;
+    width: 405px;
+    padding-left: 24px;
+}
+.bottom-line{
+    width: 405px;
+    height: 1px;
+    background-color: #E6E6E6;
+}
+.price-cartdetail-info{
+    display: flex;
+    padding-top: 16px;
+    padding-left: 24px;
+    padding-right: 16px;
+
+}
+.price-title-detailinfo{
+    width: 150px;
+}
+.discountprice{
+    padding-top: -7px;
+}
+
+
+.price-body-detailinfo{
+    margin-left: 0px;
+    width: 200px;
+    text-align: right;
+    font-size: 16px;
+    color: #333333;
+    font-weight: normal;
+}
+.totalorder-container, .totalorder-text{
+    margin-top: 34px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.button-continue-checkout{
+    margin-top: 16px;
+    padding-left: 24px;
+    padding-right: 16px;
+    display: table;
+    
+}
+.p{
+    width: 355px;
+    height: 44px;
+    background-color: #D8A338;
+    color: white;
+    font-weight: bold;
+    border-radius: 24px;
+    border: none;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+.text-btn-checkout-noactive{
+    width: 355px;
+    height: 44px;
+    background-color: darkgray;
+    color: white;
+    font-weight: bold;
+    border-radius: 24px;
+    border: none;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    opacity: 0.4;
+}
+.text-btn-checkout:hover{
+    cursor: pointer;
+}
+
